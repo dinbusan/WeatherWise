@@ -1,0 +1,124 @@
+body {
+  margin: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #CBD18F;
+  color: black;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.search_header {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 50px;
+  font-weight: 100;
+  color: #3A6B35;
+  text-align: center;
+}
+
+.weather_card {
+  /* Add shadows to create the "card" effect */
+  width: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  text-align: center;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+
+/* .card_header {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+  color: rgb(28, 28, 28);
+} */
+
+p {
+  font-size: medium;
+}
+
+.input_button {
+  justify-content: center;
+  margin-top: 1em;
+  display: flex;
+  position: relative;
+}
+
+.list {
+  position: absolute;
+  background-color: white;
+  color: black;
+  text-align: left;
+  list-style-type: none;
+}
+
+.optionButton {
+  text-align: left;
+  font-size: small;
+}
+.optionButton:hover {
+  color: white;
+  background-color: darkgrey;
+  cursor: pointer;
+}
+
+.weather_display {
+  display: flex;
+  overflow-x: scroll;
+  margin-top: 4px 0px 5px;
+  padding-bottom: 2px;
+  width: 300px;
+}
+
+.weather_display_icon {
+  display: inline-block;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.weather_display_temp,
+.weather_display_text {
+  margin: 0px;
+  color: black;
+}
+
+.weather_display_temp {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.forecasts_div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.optionButton {
+  background-color: transparent;
+  border-width: 0;
+  font-family: inherit;
+  font-size: small;
+  font-style: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  padding: 0;
+}
+
+.favorited {
+  background-color: #E3B448;
+}
+
+
