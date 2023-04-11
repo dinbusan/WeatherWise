@@ -14,6 +14,8 @@ code {
     monospace;
 }
 
+
+
 .search_header {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 50px;
@@ -59,10 +61,12 @@ p {
 
 .list {
   position: absolute;
+  margin-top: 20px;
   background-color: white;
   color: black;
   text-align: left;
   list-style-type: none;
+  padding-left: 0;
 }
 
 .optionButton {
@@ -116,9 +120,4 @@ p {
   line-height: inherit;
   padding: 0;
 }
-
-.favorited {
-  background-color: #E3B448;
-}
-
 

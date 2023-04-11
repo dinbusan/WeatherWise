@@ -26,7 +26,6 @@ const createNewFavorite = async () => {
 
   const collection = await getWeatherCollection();
   const result = await collection.insertOne(newFavorite);
-  console.log('Inserted new favorite with ID:', result.insertedId);
   return newFavorite;
 };
 

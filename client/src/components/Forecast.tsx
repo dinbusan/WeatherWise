@@ -16,7 +16,7 @@ const Degree = ({ temp }: { temp: number }): JSX.Element => (
 
 const Forecast = ({ data, onDelete }: Props): JSX.Element => {
   const today = data.list[0];
-  const [favorited, setFavorited] = useState(false);
+  // const [favorited, setFavorited] = useState(data.isFavorite || false);
 
   const handleFavoriteClick = async () => {
     try {
@@ -26,8 +26,7 @@ const Forecast = ({ data, onDelete }: Props): JSX.Element => {
         coord: data.coord,
       };
       await axios.post(`/api/favorites/`, requestBody);
-      setFavorited(true);
-      document.querySelector('.weather_card')!.classList.add('favorited');
+      // setFavorited(true);
     } catch (error) {
       console.error(error);
     }
@@ -35,7 +34,8 @@ const Forecast = ({ data, onDelete }: Props): JSX.Element => {
 
   return (
     <div>
-      <div className="weather_card">
+      
+      <div className={`weather_card`}>
         <section>
           <h2>
             {data.name}
@@ -58,11 +58,12 @@ const Forecast = ({ data, onDelete }: Props): JSX.Element => {
           </button>
           
           <button
-            className={`card_button ${favorited ? 'favorited' : ''}`}
+            // className={`card_button ${favorited ? 'favorited' : ''}`}
             onClick={handleFavoriteClick}
           >
             Favorite
           </button>
+          <p>Scroll to the right to see the today's forecast!</p>
           </div>
 
         <section className="weather_display">
@@ -80,9 +81,9 @@ const Forecast = ({ data, onDelete }: Props): JSX.Element => {
             </div>
           ))}
         </section>
-      </div>
-    </div>
-  );
-};
-
+        </div>
+        </div>
+        );
+      };
+      
 export default Forecast;

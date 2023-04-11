@@ -15,7 +15,7 @@ const useForecast = () => {
       const initialData = data.map((item: any) => {
         const { lat, lon } = item.coord;
         const name = item.name;
-        return { name, lat, lon, isFavorite: true };
+        return { name, lat, lon};
       });
 
       const newForecasts = [];

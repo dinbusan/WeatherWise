@@ -21,6 +21,7 @@ const Search = ({
       <section className="search_header">
         <h1 className="search_title">Weather Forecast</h1>
         <p>Enter a city to check the weather!</p>
+        <p>Clicking Favorite will add the city to your favorites list and reload anytime you use this app.</p>
 
         <div className="input_button">
           <input

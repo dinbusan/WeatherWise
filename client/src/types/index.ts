@@ -5,6 +5,7 @@ export type OptionType = {
 };
 
 export type forecastType = {
+    isFavorite: boolean;
     name: string,
     country: string,
     sunrise: number, 
