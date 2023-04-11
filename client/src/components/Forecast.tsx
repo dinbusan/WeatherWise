@@ -58,6 +58,7 @@ const Forecast = ({ data, onDelete }: Props): JSX.Element => {
           </button>
           
           <button
+          className="card_button"
             // className={`card_button ${favorited ? 'favorited' : ''}`}
             onClick={handleFavoriteClick}
           >

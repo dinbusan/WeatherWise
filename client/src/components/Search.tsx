@@ -19,7 +19,7 @@ const Search = ({
   return (
     <main>
       <section className="search_header">
-        <h1 className="search_title">Weather Forecast</h1>
+        <h1 className="search_title">WeatherWise</h1>
         <p>Enter a city to check the weather!</p>
         <p>Clicking Favorite will add the city to your favorites list and reload anytime you use this app.</p>
 
@@ -43,7 +43,7 @@ const Search = ({
             ))}
           </ul>
 
-          <button onClick={onSubmit}>Search</button>
+          <button className="searchButton" onClick={onSubmit}>Search</button>
         </div>
       </section>
     </main>
