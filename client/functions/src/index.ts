@@ -1,19 +1,28 @@
-import express, { Request, Response } from 'express';
-import { getSearchOptions, getWeatherData } from './api';
-import { retrieveDatafromDataBase, updatedPlaces } from './db';
-const bodyParser = require('body-parser');
+import express from "express";
+import { getWeatherData } from "./api";
+import { retrieveDatafromDataBase, updatedPlaces } from "./db";
+
+const functions = require("firebase-functions");
+
+const cors = require("cors");
+const corsOptions = {
+  origin: "*",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
 
 const app = express();
-app.use(bodyParser.json());
-const cors = require('cors');
+
+app.use(cors(corsOptions));
+app.use(express.json());
 
 app.use(
-  cors({
-    origin: 'http://localhosts:3000',
+  express.urlencoded({
+    extended: true,
   })
 );
 
-app.post('/api/favorites', async (req: Request, res: Response) => {
+app.post("/api/favorites", async (req, res) => {
   try {
     const dataFromDataBase = await retrieveDatafromDataBase();
     let { places, totalNumberOfPlaces } = dataFromDataBase[0];
@@ -28,36 +37,38 @@ app.post('/api/favorites', async (req: Request, res: Response) => {
     res.json(updatedDb);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Error adding favorite');
+    res.status(500).send("Error adding favorite");
   }
 });
 
-app.get('/api/weather/:lat/:lon', async (req: Request, res: Response) => {
+app.get("/api/weather/:lat/:lon", async (req, res) => {
   try {
     const { lat, lon } = req.params;
     const weatherData = await getWeatherData(lat, lon);
     res.json(weatherData);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Error fetching weather data');
+    res.status(500).send("Error fetching weather data");
   }
 });
 
-app.get('/api/favorites', async (req: Request, res: Response) => {
+app.get("/api/favorites", async (req, res) => {
   try {
     const itemsFromDb = await retrieveDatafromDataBase();
     const { places, totalNumberOfPlaces } = itemsFromDb[0];
-    res.json([{
-      places,
-      totalNumberOfPlaces,
-    }]);
+    res.json([
+      {
+        places,
+        totalNumberOfPlaces,
+      },
+    ]);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Error fetching favorites');
+    res.status(500).send("Error fetching favorites");
   }
 });
 
-app.delete('/api/favorites/:index', async (req: Request, res: Response) => {
+app.delete("/api/favorites/:index", async (req, res) => {
   try {
     const index = parseInt(req.params.index);
     const itemsFromDb = await retrieveDatafromDataBase();
@@ -71,13 +82,8 @@ app.delete('/api/favorites/:index', async (req: Request, res: Response) => {
     res.json(updatedDb);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Error deleting favorite');
+    res.status(500).send("Error deleting favorite");
   }
 });
 
-
-
-
-app.listen(5001, () => {
-  console.log(`Server running on port 5001`);
-});
+exports.app = functions.region("europe-west1").https.onRequest(app);

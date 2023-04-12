@@ -20,29 +20,26 @@ const Search = ({
     <main>
       <section className="search_header">
         <h1 className="search_title">WeatherWise</h1>
-        <p>Enter a city to check the weather!</p>
-        <p>Clicking Favorite will add the city to your favorites list and reload anytime you use this app.</p>
+        {/* <p>Enter a city to check the weather!</p>
+        <p>Clicking Favorite will add the city to your favorites list and reload anytime you use this app.</p> */}
 
         <div className="input_button">
+          <div className='input-and-list'>
           <input
             type="text"
             value={term}
-            className=""
+            placeholder='Enter a city...'
+            className="input_field"
             onChange={onInputChange}
           />
-          <ul className="list">
+          <div className="list">
             {options.map((option: OptionType, index: number) => (
-              <li key={option.name + '-' + index}>
-                <button
-                  className="optionButton"
-                  onClick={() => onOptionSelect(option)}
-                >
-                  {option.name}
-                </button>
-              </li>
+              <div className='search-option' key={option.name + '-' + index} onClick={() => onOptionSelect(option)}>
+                {option.name}
+              </div>
             ))}
-          </ul>
-
+          </div>
+          </div> 
           <button className="searchButton" onClick={onSubmit}>Search</button>
         </div>
       </section>

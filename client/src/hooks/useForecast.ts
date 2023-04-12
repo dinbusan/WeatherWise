@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ChangeEvent, useEffect, useState } from "react";
+import { CLIENT_RENEG_LIMIT } from "tls";
 import { OptionType, forecastType } from "../types";
 
 const useForecast = () => {
@@ -10,7 +11,7 @@ const useForecast = () => {
 
   const getInitialFavorites = async () => {
     try {
-      const response = await axios.get("/api/favorites");
+      const response = await axios.get("https://europe-west1-weatherwise-543ec.cloudfunctions.net/app/api/favorites");
       const data = response.data[0].places;
       const initialData = data.map((item: any) => {
         const { lat, lon } = item.coord;
@@ -21,7 +22,7 @@ const useForecast = () => {
       const newForecasts = [];
       for (const city of initialData) {
         const response = await axios.get(
-          `/api/weather/${city.lat}/${city.lon}`
+          `https://europe-west1-weatherwise-543ec.cloudfunctions.net/app/api/weather/${city.lat}/${city.lon}`
         );
         const newForecast = response.data;
         newForecasts.push(newForecast);
@@ -38,7 +39,7 @@ const useForecast = () => {
     const apiKey = "10f3b9293d761df72964a0fe6e00e4f1";
     try {
       const response = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=${5}&appid=${apiKey}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=${5}&appid=${apiKey}`
       );
       const data = response.data;
       setOptions(data);
@@ -49,7 +50,7 @@ const useForecast = () => {
 
   const deleteForecast = async (index: number) => {
     try {
-      await axios.delete(`/api/favorites/${index}`);
+      await axios.delete(`https://europe-west1-weatherwise-543ec.cloudfunctions.net/app/api/favorites/${index}`);
       setForecasts((prevForecasts) =>
         prevForecasts.filter((_, i) => i !== index)
       );
@@ -68,7 +69,7 @@ const useForecast = () => {
 
   const getForecast = async (city: OptionType) => {
     try {
-      const response = await axios.get(`/api/weather/${city.lat}/${city.lon}`);
+      const response = await axios.get(`https://europe-west1-weatherwise-543ec.cloudfunctions.net/app/api/weather/${city.lat}/${city.lon}`);
       const newForecast = response.data;
       setForecasts([newForecast, ...forecasts]);
     } catch (error) {
@@ -94,6 +95,7 @@ const useForecast = () => {
     if (city) {
       setTerm(city.name);
       setOptions([]);
+      console.log(1, 'console logging something')
     }
   }, [city]);
 

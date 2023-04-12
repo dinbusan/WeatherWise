@@ -25,7 +25,7 @@ const Forecast = ({ data, onDelete }: Props): JSX.Element => {
         country: data.country,
         coord: data.coord,
       };
-      await axios.post(`/api/favorites/`, requestBody);
+      await axios.post(`https://europe-west1-weatherwise-543ec.cloudfunctions.net/app/api/favorites/`, requestBody);
       // setFavorited(true);
     } catch (error) {
       console.error(error);
@@ -64,7 +64,13 @@ const Forecast = ({ data, onDelete }: Props): JSX.Element => {
           >
             Favorite
           </button>
-          <p>Scroll to the right to see the today's forecast!</p>
+          <p className='scroll_message'>Scroll to see the today's forecast</p>
+          </div>
+          <div className='scroll_arrow'>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-1 h-1">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+</svg>
+
           </div>
 
         <section className="weather_display">
