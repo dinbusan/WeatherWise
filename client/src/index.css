@@ -31,6 +31,7 @@ code {
   .search_title {
     font-size: 20px;
     text-align: left;
+    
   }
   .search_header {
     text-align: left;
@@ -204,4 +205,10 @@ p {
 
 .scroll_message {
   margin-bottom: 0;
+}
+
+.search_text{
+  font-size: 20px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding-bottom: 10px;
 }

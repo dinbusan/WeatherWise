@@ -22,7 +22,14 @@ const Search = ({
         <h1 className="search_title">WeatherWise</h1>
         {/* <p>Enter a city to check the weather!</p>
         <p>Clicking Favorite will add the city to your favorites list and reload anytime you use this app.</p> */}
-
+        <p className="search_text">
+          Type in your city into the search bar, <br />
+          <br />
+          click on the correct city,
+          <br />
+          <br />
+          then click the search button!
+        </p>
         <div className="input_button">
           <div className="input-and-list">
             <input
