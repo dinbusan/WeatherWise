@@ -31,26 +31,6 @@ code {
   left: 20px;
 }
 
-
-@media only screen and (max-width: 600px) {
-  /* Styles for smaller screens */
-  h1 {
-    font-size: 45px;
-  }
-  .search_title {
-    font-size: 20px;
-    text-align: left;
-    
-  }
-  .search_header {
-    text-align: left;
-  }
-}
-
-h2 {
-  padding-top: 1em;
-}
-
 .weather_card {
   width: 300px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -58,6 +38,13 @@ h2 {
   background-color: #b3ceb0;
   
 }
+
+
+h2 {
+  padding-top: 1em;
+}
+
+
 
 .weather_card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -229,4 +216,31 @@ input:focus {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   padding-bottom: 10px;
   margin-top: 5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  /* Styles for smaller screens */
+  h1 {
+    font-size: 45px;
+  }
+  .search_title {
+    font-size: 20px;
+    text-align: left;
+    
+  }
+  .search_header {
+    text-align: left;
+  }
+  p{
+    text-align: center;
+  }
+  body{
+    margin:15px
+  }
+  .weather_card{
+    width: 350px;
+  }
+  .input_field{
+    width: 60vw;
+  }
 }
