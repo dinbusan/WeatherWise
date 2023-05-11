@@ -109,7 +109,13 @@ p {
   border-bottom: 1px solid;
   /* border-radius: 1em; */
   background-color: #f6f6f6;
+
 }
+input:focus {
+    outline-color: lightgray;
+    transform: scale(1.02) ; 
+      transition: outline-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
 
 .searchButton {
   background: none;
