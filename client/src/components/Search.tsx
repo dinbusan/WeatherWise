@@ -1,9 +1,13 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { OptionType } from "../types";
+
+interface KeyboardEvent {
+  key: string;
+}
 
 type Props = {
   term: string;
-  options: [];
+  options: OptionType[];
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onOptionSelect: (option: OptionType) => void;
   onSubmit: () => void;
@@ -16,19 +20,32 @@ const Search = ({
   onOptionSelect,
   onSubmit,
 }: Props): JSX.Element => {
+const handleKeyDown = (event: KeyboardEvent): void => {
+  if (event.key === "Enter") {
+    onSubmit();
+  }
+};
+
+useEffect(() => {
+  document.addEventListener("keydown", handleKeyDown);
+  return () => {
+    document.removeEventListener("keydown", handleKeyDown);
+  };
+}, [onSubmit]);
+
+
   return (
     <main>
       <section className="search_header">
         <h1 className="search_title">WeatherWise</h1>
-        {/* <p>Enter a city to check the weather!</p>
-        <p>Clicking Favorite will add the city to your favorites list and reload anytime you use this app.</p> */}
         <p className="search_text">
-          Type in your city into the search bar, <br />
+          Type in your city into the search bar, click on the correct city,{" "}
+         
+          {" "}then click the search button, or press Enter!
           <br />
-          click on the correct city,
           <br />
-          <br />
-          then click the search button!
+          If you select favorite your city will be reloaded each time you use
+          this app.
         </p>
         <div className="input_button">
           <div className="input-and-list">
